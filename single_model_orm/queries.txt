@@ -1,0 +1,58 @@
+$ python manage.py shell
+Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:43:08) [MSC v.1926 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import *
+>>> Users.objects.create(first_name ="Jerry", last_name="Johnson", email_address="JJ@gmail.com", age="41")
+<Users: Users object (1)>
+>>> Users.objects.create(first_name ="Steve", last_name="Black", email_address="SB@gmail.com", age="22")   
+<Users: Users object (2)>
+>>> Users.objects.create(first_name ="Adam", last_name="Green", email_address="AG@gmail.com", age="19")    
+<Users: Users object (3)>
+>>> Users.objects.all()
+<QuerySet [<Users: Users object (1)>, <Users: Users object (2)>, <Users: Users object (3)>]>
+>>> Users.objects.first()
+<Users: Users object (1)>
+>>>
+KeyboardInterrupt
+>>> Users.object.last()                                                                                   
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Users' has no attribute 'object'
+>>> Users.objects.last()
+<Users: Users object (3)>
+>>> c = Users.objects.get(id=3) 
+>>> c.last_name = "Pancakes" 
+>>> Users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Jerry', 'last_name': 'Johnson', 'email_address': 'JJ@gmail.com', 'age': 41, 'updated_at': datetime.datetime(2020, 9, 23, 22, 28, 57, 322442, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 28, 57, 322442, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Steve', 'last_name': 'Black', 'email_address': 'SB@gmail.com', 'age': 22, 'updated_at': datetime.datetime(2020, 9, 23, 22, 29, 40, 345886, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 29, 40, 345886, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Adam', 'last_name': 'Green', 'email_address': 'AG@gmail.com', 'age': 19, 'updated_at': datetime.datetime(2020, 9, 23, 22, 30, 5, 711668, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 30, 5, 711668, tzinfo=<UTC>)}]>
+>>> c.save()
+>>> Users.objects.get(id=3)
+<Users: Users object (3)>
+>>> Users.objects.get(id=3)__dict__
+  File "<console>", line 1
+    Users.objects.get(id=3)__dict__
+                           ^
+SyntaxError: invalid syntax
+>>> Users.objects.get(id=3).__dict__
+{'_state': <django.db.models.base.ModelState object at 0x039A6B98>, 'id': 3, 'first_name': 'Adam', 'last_name': 'Pancakes', 'email_address': 'AG@gmail.com', 'age': 19, 'updated_at': datetime.datetime(2020, 9, 23, 22, 35, 33, 
+269442, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 30, 5, 711668, tzinfo=<UTC>)}
+>>> c = Users.objects.get(id=2) 
+>>> c.delete()
+(1, {'users_app.Users': 1})
+>>> Users.objects.get(id=2) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Administrator\Desktop\cd\python\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\Desktop\cd\python\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 406, in get
+    raise self.model.DoesNotExist(
+users_app.models.Users.DoesNotExist: Users matching query does not exist.
+>>> Users.objects.all().order_by("first_name") 
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+>>> Users.objects.all().order_by("-first_name")  
+<QuerySet [<Users: Users object (1)>, <Users: Users object (3)>]>
+>>> Users.objects.all().order_by("first_name") 
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+>>> Users.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Jerry', 'last_name': 'Johnson', 'email_address': 'JJ@gmail.com', 'age': 41, 'updated_at': datetime.datetime(2020, 9, 23, 22, 28, 57, 322442, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 28, 57, 322442, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Adam', 'last_name': 'Pancakes', 'email_address': 'AG@gmail.com', 'age': 19, 'updated_at': datetime.datetime(2020, 9, 23, 22, 35, 33, 269442, tzinfo=<UTC>), 'created_at': datetime.datetime(2020, 9, 23, 22, 30, 5, 711668, tzinfo=<UTC>)}]>
+>>>

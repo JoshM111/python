@@ -1,0 +1,42 @@
+$ python manage.py shell
+Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:43:08) [MSC v.1926 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import *
+d1= Dojo.objects.create(name="Seattle", city="Seattle", state="WA")
+d2= Dojo.objects.create(name="Denver", city="Denver", state="CO")
+d3= Dojo.objects.create(name="LA", city="Los Angeles", state="CA")
+c= Dojo.objects.get(id=1)
+c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+c= Dojo.objects.get(id=2)
+c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> c= Dojo.objects.get(id=3)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet []>
+d4= Dojo.objects.create(name="Seattle", city="Seattle", state="WA")
+d5= Dojo.objects.create(name="Denver", city="Denver", state="CO")
+d6= Dojo.objects.create(name="LA", city="Los Angeles", state="CA")
+Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+n1= Ninja.objects.create(first_name="John", last_name="Doe", Dojo=d4)   
+n2= Ninja.objects.create(first_name="Jane", last_name="Doe", Dojo=d4) 
+n3= Ninja.objects.create(first_name="Joan", last_name="Doe", Dojo=d4) 
+n4=Ninja.objects.create(first_name="Steve", last_name="Doe", Dojo=d5)  
+n5= Ninja.objects.create(first_name="John", last_name="Adams", Dojo=d5) 
+n6= Ninja.objects.create(first_name="Rick", last_name="Doe", Dojo=d5) 
+n7= Ninja.objects.create(first_name="Reginald", last_name="Adams", Dojo=d6) 
+n8= Ninja.objects.create(first_name="Lucy", last_name="Johnson", Dojo=d6) 
+n9= Ninja.objects.create(first_name="Austin", last_name="Powers", Dojo=d6) 
+>>> Dojo.objects.first().teach_ninjas.all()
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+>>> Dojo.objects.last().teach_ninjas.all()  
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+>>> Ninja.objects.last().Dojo
+<Dojo: Dojo object (6)>
+exit()
+>>> from dojo_ninjas_app.models import * 
+>>> d7 = Dojo.objects.create(name="new", city="New York", state="NY", desc="New Campus!") 

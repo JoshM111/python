@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first django html</title>
+</head>
+<body>
+    <h1>now im using templates</h1>
+    <a href="/dashboard">link to dashboard</a>
+    <!-- you need to lead all reference links with a /  -->
+    <p>{{name}}</p>
+    <p>{{email}}</p>
+    <form action="/submission" method="POST">
+        {% csrf_token %}
+        Name: <input type="text" name="user_name">
+        Secret: <input type="text", name="secret">
+        Fav Spongebob Character: <select name="character" id="">
+            <option value="squid">Squidward</option>
+            <option value="squirrel">Sandy</option>
+            <option value="sponge">Spongebob</option>
+            <option value="crab">Mr. Crabs</option>
+            <option value="star_fish">Patrick</option>
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>
