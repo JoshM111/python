@@ -1,0 +1,17 @@
+lecture notes
+
+1) Pods2.0? Email me!(Time Zone, When you're working)
+2) Django video is UP! (View by next lecture on 9/15)
+3) Want more OOP practice? Hit me up!
+3) Drawing out Facebook
+    -user model(models, attributes, primary keys and more)
+    -post model(foreign keys, one-to-many relationship)
+    -like model(many-to-many relationship)
+5) (post - lecture) Group activity
+  first two assignments in MySQL chapter
+
+HW: all 4 MySQL assignments
+reading: watch Django video(see#2) read up to first django project
+
+
+you dont have to use MySQL workbench to complete the assignments

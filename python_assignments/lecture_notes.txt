@@ -1,0 +1,41 @@
+# day two lecture.
+# 1) accessing info inside dictionaries and lists
+#     -index notation(list)
+#         - in js lists are arrays
+#     -key notation(dictionaries)
+#     -dot notation (dictionaries... but no until OOP)
+# 2) Overview of Dictionaries and Lists
+#     -Why would I use one over the other?
+# 3) Going Multi-level
+#     -Lists inside of lists, etc
+#     -Using For Loops with lists that contain dictionaries
+# 4) (If extra time) *BREIF* OOP Intro
+#     -Talking about pencils
+# 5) (Post-Lecture) Group Activity
+#     -Dictionary and List Practice
+
+# HW: Complete as much of Week 1's assignments as you can + Get comfy with you terminal and running Python files in the terminal
+# Reading fo next lecture: Up to "User" assignment in OOP section
+
+
+# cannot add two datatypes together in python as we could in js
+# dictionaries are objects in js
+
+# person = {
+#     "first_name": "john", 
+#     "last_name": "Smith", 
+#     "num_people_saved": 6
+# }
+# print(person["last_name"]) # Key Notation
+# print(person["first_name"], person["last_name"])
+
+# person.last_name #Dot Notation
+
+# all will need the name of the dictionary that you are trying to access and then the name of the item that you are trying to access in the dictionary
+
+
+
+
+
+
+
