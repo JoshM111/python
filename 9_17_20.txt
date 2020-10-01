@@ -1,0 +1,23 @@
+overview of lecture
+
+1) redirecting
+- why is it bad to render on a POST route?
+- adding more to our form
+- adding in redirecting- developing good programming habits (with a diagram) and redefining GET and POST
+2) Session
+- What is the "stateless" about our application?
+- migrating to bring in Session
+- making our form data persist in our application
+3) (Post-Lecture) Group Activity (please have a fresh django project ready!)
+- dojo survey and dojo survey revisited
+HW: get to end of first django section, first 3 assignments in django orm
+
+some css will be required on the belt exams
+    ie. make this button blue or red or a different shape
+redirection
+when using this 
+    you are changing the path via the function
+    you dont want to redirect to a POST route
+        ex.
+migrations
+you can use jinja to recall the request.session data straight in the html

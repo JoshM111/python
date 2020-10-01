@@ -1,0 +1,35 @@
+1) looking at models.py
+- creating dragon models
+adding attributes
+migrating AKA creating our database
+2) going into the shell
+what is CRUD>
+CRUD commands with our dragon model
+3) taking it to the template
+importing our class
+using context to query
+using jinja to write for loops and if statements to show our database
+post lecture ninja gold demo
+hw: first two assignments in django orm
+reading: read up to books and author shell (x5 readings)
+
+
+dragon models
+we will be using the basic mysql orms in the models.py file in django.
+common practice is that classes will have capital letters to begin with
+next list attributes
+python manage.py makemigrations
+when you go into the shell make sure to import the .models file EVERYTIME
+
+ORM CRUD commands
+CREATING 
+READING 
+UPDATING
+DELETING 
+WHAT IS THE DIFFERENCE BETWEEN "" AND ''?
+
+using the GET command to retrieve multiple items you will get an error
+GET is meant to get single items
+
+YOU WILL NEED TO KNOW HOW TO WRITE FOR LOOPS FOR THE EXAM!!!!!!!!!!
+
