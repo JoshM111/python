@@ -1,4 +1,25 @@
+from __future__ import unicode_literals
 from django.db import models
+import re
+
+class UserManager(models.Manager):
+    def create_validator(self, reqPOST):#reqPOST is the request.POST data from the views.py file but named differently here because request.POST isnt a usable variable
+        errors= {}
+        # add keys and values to errors dict for each invalid field
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+                                    # in the email reg the ^ is the start point 
+                                    # the $ is the end
+                                    # the pluses allow any number of characters as long as they are the within the confines of the arguement symbols
+        if len(reqPOST['user_name']) < 5:
+            errors['user_name']= "Name must be at least 5 characters."
+        if len(reqPOST['email']) < 8:
+            errors['email']= "Email needs to be longer."
+        if len(reqPOST['password']) < 8:
+            errors['password']= "Password must be at least 8 characters."
+        if reqPOST['password'] != reqPOST['password_conf']:
+            errors['password_conf']= "Passwords must match!"
+        return errors
+
 
 class User(models.Model):
     name= models.CharField(max_length=24)
