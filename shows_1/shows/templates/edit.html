@@ -9,10 +9,10 @@
     <h1>Edit Show</h1>
     <form action="/shows/{{ show.id }}/update" method="POST">
         {% csrf_token %}
-            Title<input type="text" value="{{ show.title }}">
-            Network<input type="text" value="{{ show.network }}">
-            Release Date<input type="date" value="{{ show.release| date:'Y-M-D' }}">
-            <textarea name="desc" id="" cols="30" rows="10">{{ show.desc }}</textarea>
+            Title<input type="text" value="{{ show.title }}" name="title">
+            Network<input type="text" value="{{ show.network }}" name="network">
+            Release Date<input type="date" value="{{ show.release|date:'Y-m-d' }}" name="release">
+            Description<textarea name="desc" id="" cols="30" rows="10">{{ show.desc }}</textarea>
         <button>Submit</button>
     </form>
 </body>
