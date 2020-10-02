@@ -18,6 +18,8 @@ class UserManager(models.Manager):
             errors['password']= "Password must be at least 8 characters."
         if reqPOST['password'] != reqPOST['password_conf']:
             errors['password_conf']= "Passwords must match!"
+        if not EMAIL_REGEX.match(reqPOST['email']):
+            errors['regex']= "Email is not in the correct format."
         return errors
 
 
