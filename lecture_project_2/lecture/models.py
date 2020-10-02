@@ -29,3 +29,4 @@ class User(models.Model):
     password= models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    objects= UserManager()
