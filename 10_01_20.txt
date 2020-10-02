@@ -1,0 +1,35 @@
+overview of lecture
+
+1) Registration
+    -Setting up models.py's User class and template
+
+2)Bcrypt
+    -what is bcrypt?
+    -why do we use it?
+    -installation
+
+3)Validations
+    -Making UserManager
+    -Regular expressions
+    -How to handle errors in views.py
+    -messages
+4) Login
+    -How to process a Login
+    -Using session
+    -logout and permissions
+
+5)(GA)-semirestful tv shows
+
+hw:semi-restful tv shows Validations
+
+
+Actions more specific to what the form is doing
+how are we going to store password in the database?
+bcrypt
+    encrypts password: 
+
+using formats to validate instead of length
+    ie. is there an @ sign in the email?
+        is there an @ sign plus a .com afterward?
+
+
