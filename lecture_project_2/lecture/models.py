@@ -21,7 +21,21 @@ class UserManager(models.Manager):
         if not EMAIL_REGEX.match(reqPOST['email']):
             errors['regex']= "Email is not in the correct format."
         return errors
+class KoalaManager(models.Manager):
+    def create_validator(self, reqPOST):
+        errors={}
+        if len(reqPOST['koala_name']) < 3:
+            errors['koala_name']= "Name should be at least 3 characters"
+        if len(reqPOST['talent'])> 6:
+            errors['talent']= "Koalas are more talented than that!"
+        koala_with_same_name= Koala.objects.filter(name=reqPOST['koala_name'])
+        if len(koala_with_same_name) > 0:
+            errors['duplicate'] = "Name has already been taken, try again."
+        return errors
 
+
+
+# EACH CLASS SHOULD HAVE ITS OWN MANAGER TO MAKE EDITS
 
 class User(models.Model):
     name= models.CharField(max_length=24)
@@ -30,3 +44,12 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     objects= UserManager()
+
+class Koala(models.Model):
+    name= models.CharField(max_length=40)
+    talent= models.TextField()
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user= models.ForeignKey(User, related_name="koalas", on_delete=models.CASCADE)
+    users_vote= models.ManyToManyField(User, related_name="koala_votes")
+    objects= KoalaManager()

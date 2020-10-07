@@ -6,4 +6,5 @@ urlpatterns= [
     path('login', views.login),
     path('main_page', views.main_page),
     path('logout', views.logout),
+    path('koalas/create', views.create_koala),
 ]

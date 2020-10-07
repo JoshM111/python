@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, UserManager
+from .models import User, Koala
 from django.contrib import messages
 import bcrypt
 
@@ -37,10 +37,22 @@ def main_page(request):
         messages.error(request, "Why you try to get around this?! Stop it and register or login!")
         return redirect('/')
     context = {
-        'user': User.objects.get(id=request.session['user_id'])
+        'user': User.objects.get(id=request.session['user_id']),
+        'all_koalas': Koala.objects.all(),
     }
     return render(request, 'main_page.html', context)
     
 def logout(request):
     request.session.clear()
     return redirect('/')
+def create_koala(request):
+    if request.method == "POST":
+        errors = Koala.objects.create_validator(request.POST)
+        if len(errors)>0:
+            for key, value in errors.items():
+                messages.error(request,value)
+        # return redirect('/main_page')
+        else:
+            koala = Koala.objects.create(name=request.POST['koala_name'], talent=request.POST['talent'], user=User.objects.get(id=request.session['user_id']))
+            # return redirect('/main_page')
+    return redirect('/main_page')

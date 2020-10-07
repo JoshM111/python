@@ -1,0 +1,28 @@
+overview of lecture
+
+1) Getting as far as we can in the checklist for the hour:
+    -updating models.py
+    -adding koala create form/validations/functions + using session's power
+    -displaying via tables
+    -show logged in user page
+    -show one koala page
+2) Preview of things to come in this application:
+    -security
+    -delete
+    -votes/unvotes page
+    -sorting koalas
+    -vote infor on user/koala pages
+3) (post- lecture) office hour from now on
+
+HW: semi restful tv shows validations
+can start exam any day from 10/9 to 10/22
+-complete minimum reqs in 24 hours-> orange belt
+-complete minimum reqs in 5hours-> red beltcomplete minimum and advanced reqs in 5 hours and deplow-> black belt
+
+
+
+exam tips
+have a project and app ready to go with logins
+    DONT MIGRATE! you will need to migrate later
+    
+
