@@ -32,4 +32,9 @@ using formats to validate instead of length
     ie. is there an @ sign in the email?
         is there an @ sign plus a .com afterward?
 
+Login
+    - how to process a Login
+    - using session
+    - logout and permissions
+
 

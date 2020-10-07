@@ -14,10 +14,33 @@ def register(request):
             return redirect('/')
         else:
             hash_1= bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
-            User.objects.create(
+            print(hash_1)
+            user = User.objects.create(
                 name=request.POST['user_name'],
                 email=request.POST['email'],
                 password=hash_1
             )
-            return redirect('main_page')#the main page of the application
+            request.session['user_id'] = user.id
+            return redirect('/main_page')#the main page of the application
+    return redirect('/')
+def login(request):
+    user = User.objects.filter(email=request.POST['email'])
+    if len(user) > 0:
+        user = user[0]
+        if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
+            request.session['user_id'] = user.id
+            return redirect('/main_page')
+    messages.error(request, "Stop it! Get some help!")
+    return redirect('/')
+def main_page(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "Why you try to get around this?! Stop it and register or login!")
+        return redirect('/')
+    context = {
+        'user': User.objects.get(id=request.session['user_id'])
+    }
+    return render(request, 'main_page.html', context)
+    
+def logout(request):
+    request.session.clear()
     return redirect('/')
