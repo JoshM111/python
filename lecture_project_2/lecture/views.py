@@ -56,3 +56,34 @@ def create_koala(request):
             koala = Koala.objects.create(name=request.POST['koala_name'], talent=request.POST['talent'], user=User.objects.get(id=request.session['user_id']))
             # return redirect('/main_page')
     return redirect('/main_page')
+def user(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "Why you try to get around this?! Stop it and register or login!")
+        return redirect('/')
+    context = {
+        'user': User.objects.get(id=request.session['user_id']),
+    }
+    return redirect(request, "profile.html", context)
+def show(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "Why you try to get around this?! Stop it and register or login!")
+        return redirect('/')
+    koala_with_id = Koala.objects.filter(id=id)
+    if len(koala_with_id) > 0:
+        context = {
+            'koala': Koala.objects.get(id=id)
+        }
+        return rendedr(request, "koala.html", contect)
+    else:
+        return redirect('/user')
+def delete_koala(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "Why you try to get around this?! Stop it and register or login!")
+        return redirect('/')
+    if request.method == "POST":
+        koala_with_id = Koala.objects.filter(id=id)
+    if len(koala_with_id) > 0:
+        koala = Koala.objects.get(id=id)
+            if koala.user.id  == request.session['user_id']:
+                koala.delete()
+    return redirect('/main_page')

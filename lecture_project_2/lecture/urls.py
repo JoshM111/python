@@ -7,4 +7,7 @@ urlpatterns= [
     path('main_page', views.main_page),
     path('logout', views.logout),
     path('koalas/create', views.create_koala),
+    path('user', views.user),
+    path('koalas/show/<int:id>', views.show),
+    path('koalas/delete/<int:id>', views.delete_koala),
 ]
