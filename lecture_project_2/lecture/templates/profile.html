@@ -10,7 +10,13 @@
     <h2>Email: {{user.email}}</h2>
     <h2>Koalas Owned:</h2>
     <ul>
-        {% for koalas in user.koalas.all %}
+        {% for koala in user.koalas.all %}
+        <li><a href="/koalas/show/{{koala.id}}">{{koala.name}}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>koalas Voted For:</h2>
+    <ul>
+        {% for koala in user.voted_koalas.all %}
         <li><a href="/koalas/show/{{koala.id}}">{{koala.name}}</a></li>
         {% endfor %}
     </ul>

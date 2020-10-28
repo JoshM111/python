@@ -22,6 +22,7 @@
         Talent: <input type="text" name="talent">
         <input type="submit" value="Submit Koala">
     </form>
+    <a href="/voting">Vote on a koala</a>
     <h1>Our Koalas</h1>
     <table>
         <tr>
@@ -30,7 +31,7 @@
             <th>Owner</th>
             <th>Actions</th>
         </tr>
-        {% for koala in User.koalas.all %}
+        {% for koala in user.koalas.all %}
         <tr>
             <td>{{koala.name}}</td>
             <td>{{koala.talent}}</td>
@@ -38,7 +39,7 @@
             <td>
                 <form action="/koalas/delete/{{koala.id}}" method="POST">
                     {% csrf_token %}
-                    <input type="submit" value="Delete {{koala.id}}">
+                    <input type="submit" value="Delete {{koala.name}}">
                 </form>
             </td>
         </tr>

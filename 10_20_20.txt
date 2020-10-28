@@ -1,0 +1,33 @@
+Overview of Lecture
+
+1) Defining the render function
+    -what is it really doing?
+2)revisiting jQuery
+    -How does it work?
+3)Adding jQuery into our full-stack application
+    -what is preventDefault?
+    -what is the AJAX Method?
+    -what do we need to change about our processes?
+    -what is a snippet?
+4) (post-lecture)"office hour"
+
+
+render
+    gets info from the backend 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

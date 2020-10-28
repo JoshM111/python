@@ -26,7 +26,7 @@ class KoalaManager(models.Manager):
         errors={}
         if len(reqPOST['koala_name']) < 3:
             errors['koala_name']= "Name should be at least 3 characters"
-        if len(reqPOST['talent'])> 6:
+        if len(reqPOST['talent']) < 1:
             errors['talent']= "Koalas are more talented than that!"
         koala_with_same_name= Koala.objects.filter(name=reqPOST['koala_name'])
         if len(koala_with_same_name) > 0:
